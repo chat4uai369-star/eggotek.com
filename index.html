@@ -13,15 +13,17 @@
         html { scroll-behavior: smooth; }
 
         :root {
-            --bg: #06020f;
-            --bg-card: rgba(16, 8, 32, 0.7);
-            --purple: #a855f7;
-            --purple-deep: #7c3aed;
-            --purple-glow: rgba(168, 85, 247, 0.15);
-            --border: rgba(168, 85, 247, 0.15);
-            --border-hover: rgba(168, 85, 247, 0.4);
-            --text: #f0eaf8;
-            --text-muted: #9b8cb8;
+            --bg: #080c14;
+            --bg-card: rgba(13, 19, 32, 0.8);
+            --blue: #3b82f6;
+            --blue-deep: #2563eb;
+            --teal: #06b6d4;
+            --amber: #f59e0b;
+            --amber-dark: #d97706;
+            --border: rgba(59, 130, 246, 0.12);
+            --border-hover: rgba(59, 130, 246, 0.35);
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
             --radius: 16px;
         }
 
@@ -33,10 +35,25 @@
             overflow-x: hidden;
         }
 
+        /* Subtle grid texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .container {
             max-width: 1120px;
             margin: 0 auto;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* ── NAV ── */
@@ -45,7 +62,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(6, 2, 15, 0.85);
+            background: rgba(8, 12, 20, 0.88);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
@@ -60,9 +77,12 @@
         .logo {
             font-size: 1.35rem;
             font-weight: 900;
-            color: var(--purple);
             text-decoration: none;
             letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
@@ -84,14 +104,14 @@
 
         .nav-cta {
             padding: 0.5rem 1.25rem;
-            background: var(--purple-deep);
-            color: #fff !important;
+            background: var(--amber);
+            color: #000 !important;
             border-radius: 8px;
-            font-weight: 600 !important;
+            font-weight: 700 !important;
             transition: background 0.25s, transform 0.25s;
         }
 
-        .nav-cta:hover { background: var(--purple); transform: translateY(-1px); }
+        .nav-cta:hover { background: var(--amber-dark); transform: translateY(-1px); }
 
         .mobile-toggle {
             display: none;
@@ -107,7 +127,7 @@
             .nav-links {
                 position: fixed;
                 inset: 64px 0 0 0;
-                background: rgba(6, 2, 15, 0.97);
+                background: rgba(8, 12, 20, 0.97);
                 flex-direction: column;
                 justify-content: center;
                 gap: 2.5rem;
@@ -128,108 +148,207 @@
             padding-top: 64px;
         }
 
-        .hero-glow {
+        /* Animated gradient orbs */
+        .hero-orb {
             position: absolute;
-            width: 800px;
-            height: 800px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(168,85,247,0.18) 0%, transparent 70%);
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: glow-pulse 6s ease-in-out infinite;
+            filter: blur(80px);
             pointer-events: none;
+            animation: orb-float 8s ease-in-out infinite;
         }
 
-        @keyframes glow-pulse {
-            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-            50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+        .hero-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
+            top: -150px;
+            left: -100px;
         }
 
-        .hero-content {
+        .hero-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -4s;
+        }
+
+        .hero-orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%);
+            top: 30%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+
+        @keyframes orb-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(20px, -20px) scale(1.05); }
+            66% { transform: translate(-10px, 15px) scale(0.97); }
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
             position: relative;
-            text-align: center;
-            padding: 6rem 0 4rem;
+            padding: 4rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+                padding: 5rem 0 3rem;
+            }
         }
 
         .hero-badge {
-            display: inline-block;
-            padding: 0.375rem 1rem;
-            background: rgba(168,85,247,0.12);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(59,130,246,0.1);
             border: 1px solid var(--border);
             border-radius: 100px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            color: var(--purple);
-            letter-spacing: 0.05em;
+            color: var(--teal);
+            letter-spacing: 0.04em;
             text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
         }
 
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--teal);
+            border-radius: 50%;
+            animation: dot-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dot-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+        }
+
         .gradient-text {
-            background: linear-gradient(135deg, #fff 0%, #d8b4fe 50%, #a855f7 100%);
+            background: linear-gradient(135deg, #fff 0%, #93c5fd 40%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-text-teal {
+            background: linear-gradient(135deg, #fff 0%, #67e8f9 40%, var(--teal) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
+            max-width: 480px;
+            margin-bottom: 2rem;
             line-height: 1.7;
+        }
+
+        @media (max-width: 900px) {
+            .hero p { margin-left: auto; margin-right: auto; }
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
+            gap: 0.75rem;
             flex-wrap: wrap;
         }
 
+        @media (max-width: 900px) {
+            .hero-buttons { justify-content: center; }
+        }
+
+        /* Hero visual — abstract network SVG */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual svg {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+        }
+
+        @media (max-width: 900px) {
+            .hero-visual { order: -1; }
+            .hero-visual svg { max-width: 320px; }
+        }
+
+        /* ── BUTTONS ── */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.875rem 2rem;
+            padding: 0.8rem 1.75rem;
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.25s;
             cursor: pointer;
             border: none;
+            font-family: inherit;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--purple), var(--purple-deep));
-            color: #fff;
-            box-shadow: 0 8px 30px rgba(124,58,237,0.35);
+            background: var(--amber);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(245,158,11,0.25);
         }
 
         .btn-primary:hover {
+            background: #fbbf24;
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(124,58,237,0.5);
+            box-shadow: 0 8px 30px rgba(245,158,11,0.4);
+        }
+
+        .btn-secondary {
+            background: var(--blue);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(59,130,246,0.25);
+        }
+
+        .btn-secondary:hover {
+            background: #60a5fa;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.4);
         }
 
         .btn-outline {
             background: transparent;
             color: var(--text);
-            border: 1px solid var(--border-hover);
+            border: 1px solid rgba(148, 163, 184, 0.3);
         }
 
         .btn-outline:hover {
-            background: rgba(168,85,247,0.08);
-            border-color: var(--purple);
+            background: rgba(59,130,246,0.06);
+            border-color: var(--blue);
+            color: #fff;
         }
 
         /* ── TRUST BAR ── */
@@ -237,6 +356,8 @@
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             padding: 3rem 0;
+            position: relative;
+            z-index: 1;
         }
 
         .trust-grid {
@@ -249,9 +370,12 @@
         .trust-number {
             font-size: 2.5rem;
             font-weight: 900;
-            color: var(--purple);
             line-height: 1;
             margin-bottom: 0.35rem;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .trust-label {
@@ -268,6 +392,8 @@
         /* ── SECTIONS ── */
         section {
             padding: 6rem 0;
+            position: relative;
+            z-index: 1;
         }
 
         .section-header {
@@ -306,12 +432,13 @@
             border-radius: var(--radius);
             padding: 2rem;
             transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .card:hover {
             border-color: var(--border-hover);
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(124,58,237,0.12);
+            box-shadow: 0 12px 40px rgba(59,130,246,0.08);
         }
 
         .card-icon {
@@ -320,13 +447,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(168,85,247,0.1);
             border-radius: 12px;
             margin-bottom: 1.25rem;
-            color: var(--purple);
         }
 
         .card-icon svg { width: 24px; height: 24px; }
+
+        .card-icon-blue { background: rgba(59,130,246,0.12); color: var(--blue); }
+        .card-icon-teal { background: rgba(6,182,212,0.12); color: var(--teal); }
+        .card-icon-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
 
         .card h3 {
             font-size: 1.15rem;
@@ -355,20 +484,37 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 2rem;
+            padding: 2.25rem 1.5rem;
             text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--teal));
         }
 
         .why-card h3 {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            color: var(--purple);
             margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .why-card p {
             font-size: 0.9rem;
             color: var(--text-muted);
+            line-height: 1.55;
         }
 
         /* ── PROJECTS ── */
@@ -378,6 +524,7 @@
             border-radius: var(--radius);
             padding: 2rem;
             transition: border-color 0.3s, transform 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .project-card:hover {
@@ -388,15 +535,20 @@
         .project-tag {
             display: inline-block;
             padding: 0.2rem 0.65rem;
-            background: rgba(168,85,247,0.12);
             border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--purple);
+            font-size: 0.72rem;
+            font-weight: 700;
             margin-bottom: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
         }
+
+        .tag-ai { background: rgba(59,130,246,0.15); color: #60a5fa; }
+        .tag-seo { background: rgba(6,182,212,0.15); color: #22d3ee; }
+        .tag-cloud { background: rgba(139,92,246,0.15); color: #a78bfa; }
+        .tag-security { background: rgba(245,158,11,0.15); color: #fbbf24; }
+        .tag-crm { background: rgba(16,185,129,0.15); color: #34d399; }
+        .tag-marketing { background: rgba(244,63,94,0.15); color: #fb7185; }
 
         .project-card h3 {
             font-size: 1.1rem;
@@ -419,8 +571,8 @@
         }
 
         .project-metric strong {
-            color: var(--purple);
-            font-size: 1.1rem;
+            color: var(--teal);
+            font-size: 1.05rem;
         }
 
         /* ── TOOLS ── */
@@ -432,8 +584,21 @@
             display: flex;
             gap: 2rem;
             align-items: flex-start;
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--amber), var(--blue), var(--teal));
         }
 
         @media (max-width: 600px) {
@@ -447,9 +612,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(168,85,247,0.1);
+            background: rgba(59,130,246,0.1);
             border-radius: 16px;
-            color: var(--purple);
+            color: var(--blue);
         }
 
         .tool-icon-lg svg { width: 36px; height: 36px; }
@@ -462,7 +627,7 @@
 
         .tool-info .tool-version {
             font-size: 0.8rem;
-            color: var(--purple);
+            color: var(--teal);
             font-weight: 600;
             margin-bottom: 0.75rem;
         }
@@ -481,24 +646,71 @@
         }
 
         /* ── CONTACT ── */
-        .contact-wrapper {
-            max-width: 560px;
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            max-width: 900px;
             margin: 0 auto;
         }
+
+        @media (max-width: 768px) {
+            .contact-layout { grid-template-columns: 1fr; }
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .contact-detail-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59,130,246,0.1);
+            border-radius: 10px;
+            color: var(--blue);
+            flex-shrink: 0;
+        }
+
+        .contact-detail-icon svg { width: 18px; height: 18px; }
+
+        .contact-detail a { color: var(--text); text-decoration: none; }
+        .contact-detail a:hover { color: var(--blue); }
 
         .contact-form {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 2.5rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
         }
 
-        .form-group { margin-bottom: 1.25rem; }
+        .form-group { margin-bottom: 1rem; }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.4rem;
-            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--text-muted);
         }
@@ -506,12 +718,12 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.75rem 1rem;
-            background: rgba(0,0,0,0.4);
+            padding: 0.7rem 0.9rem;
+            background: rgba(0,0,0,0.35);
             border: 1px solid var(--border);
             border-radius: 10px;
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-family: inherit;
             transition: border-color 0.25s;
         }
@@ -519,57 +731,50 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--purple);
+            border-color: var(--blue);
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 110px;
             resize: vertical;
         }
 
         .contact-form button[type="submit"] {
             width: 100%;
-            padding: 0.875rem;
-            background: linear-gradient(135deg, var(--purple), var(--purple-deep));
-            color: #fff;
+            padding: 0.8rem;
+            background: var(--amber);
+            color: #000;
             border: none;
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 700;
             cursor: pointer;
             font-family: inherit;
-            transition: transform 0.25s, box-shadow 0.25s;
+            transition: all 0.25s;
         }
 
         .contact-form button[type="submit"]:hover {
+            background: #fbbf24;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(124,58,237,0.4);
+            box-shadow: 0 8px 25px rgba(245,158,11,0.3);
         }
 
         .form-status {
             text-align: center;
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
             display: none;
         }
 
         .form-status.success { color: #10b981; display: block; }
         .form-status.error { color: #ef4444; display: block; }
 
-        .contact-alt {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .contact-alt a { color: var(--purple); text-decoration: none; }
-        .contact-alt a:hover { text-decoration: underline; }
-
         /* ── FOOTER ── */
         footer {
             border-top: 1px solid var(--border);
             padding: 2.5rem 0;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-inner {
@@ -604,8 +809,22 @@
             .footer-inner { flex-direction: column; text-align: center; }
         }
 
-        /* ── DIVIDERS ── */
-        .section-alt { background: rgba(10, 5, 20, 0.5); }
+        /* ── SECTION ALT ── */
+        .section-alt {
+            background: rgba(13, 19, 32, 0.5);
+        }
+
+        /* ── SCROLL ANIMATION ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -628,14 +847,125 @@
 
 <!-- HERO -->
 <section id="home" class="hero">
-    <div class="hero-glow"></div>
-    <div class="container hero-content">
-        <div class="hero-badge">AI-Powered IT &amp; Marketing for SMBs</div>
-        <h1><span class="gradient-text">Grow Faster</span> with<br>Smarter Technology</h1>
-        <p>Eggotek delivers AI automation, technical SEO, managed IT, and marketing systems that generate leads and cut costs for San Antonio businesses.</p>
-        <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary">Book a Free Strategy Call</a>
-            <a href="#services" class="btn btn-outline">See Our Services</a>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="container">
+        <div class="hero-layout">
+            <div>
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    AI-Powered IT &amp; Marketing
+                </div>
+                <h1><span class="gradient-text">Grow Faster</span> with Smarter Technology</h1>
+                <p>AI automation, technical SEO, managed IT, and marketing systems that generate leads and cut costs for San Antonio businesses.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Book a Free Strategy Call</a>
+                    <a href="#services" class="btn btn-outline">See Our Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Abstract network/connection illustration -->
+                <svg viewBox="0 0 480 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Connection lines -->
+                    <line x1="240" y1="100" x2="120" y2="200" stroke="url(#line1)" stroke-width="1.5" opacity="0.4"/>
+                    <line x1="240" y1="100" x2="360" y2="180" stroke="url(#line1)" stroke-width="1.5" opacity="0.4"/>
+                    <line x1="120" y1="200" x2="180" y2="320" stroke="url(#line2)" stroke-width="1.5" opacity="0.3"/>
+                    <line x1="360" y1="180" x2="300" y2="310" stroke="url(#line2)" stroke-width="1.5" opacity="0.3"/>
+                    <line x1="120" y1="200" x2="360" y2="180" stroke="url(#line1)" stroke-width="1" opacity="0.2"/>
+                    <line x1="180" y1="320" x2="300" y2="310" stroke="url(#line2)" stroke-width="1.5" opacity="0.3"/>
+                    <line x1="240" y1="100" x2="240" y2="210" stroke="url(#line1)" stroke-width="1" opacity="0.3"/>
+                    <line x1="80" y1="140" x2="120" y2="200" stroke="url(#line2)" stroke-width="1" opacity="0.2"/>
+                    <line x1="400" y1="120" x2="360" y2="180" stroke="url(#line2)" stroke-width="1" opacity="0.2"/>
+                    <line x1="60" y1="280" x2="120" y2="200" stroke="url(#line2)" stroke-width="1" opacity="0.15"/>
+                    <line x1="420" y1="280" x2="360" y2="180" stroke="url(#line2)" stroke-width="1" opacity="0.15"/>
+                    <line x1="240" y1="210" x2="180" y2="320" stroke="url(#line1)" stroke-width="1" opacity="0.2"/>
+                    <line x1="240" y1="210" x2="300" y2="310" stroke="url(#line1)" stroke-width="1" opacity="0.2"/>
+                    <line x1="60" y1="280" x2="180" y2="320" stroke="url(#line2)" stroke-width="1" opacity="0.15"/>
+                    <line x1="420" y1="280" x2="300" y2="310" stroke="url(#line2)" stroke-width="1" opacity="0.15"/>
+
+                    <!-- Central hub glow -->
+                    <circle cx="240" cy="210" r="60" fill="url(#glow1)" opacity="0.15"/>
+                    <circle cx="240" cy="210" r="35" fill="url(#glow1)" opacity="0.1"/>
+
+                    <!-- Primary nodes -->
+                    <circle cx="240" cy="100" r="18" fill="url(#node-blue)" stroke="rgba(59,130,246,0.3)" stroke-width="2">
+                        <animate attributeName="r" values="18;20;18" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="120" cy="200" r="15" fill="url(#node-teal)" stroke="rgba(6,182,212,0.3)" stroke-width="2">
+                        <animate attributeName="r" values="15;17;15" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="360" cy="180" r="15" fill="url(#node-teal)" stroke="rgba(6,182,212,0.3)" stroke-width="2">
+                        <animate attributeName="r" values="15;17;15" dur="4s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="180" cy="320" r="14" fill="url(#node-blue)" stroke="rgba(59,130,246,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="310" r="14" fill="url(#node-blue)" stroke="rgba(59,130,246,0.3)" stroke-width="2"/>
+
+                    <!-- Center node (larger, amber accent) -->
+                    <circle cx="240" cy="210" r="22" fill="url(#node-amber)" stroke="rgba(245,158,11,0.4)" stroke-width="2">
+                        <animate attributeName="r" values="22;24;22" dur="2.5s" repeatCount="indefinite"/>
+                    </circle>
+
+                    <!-- Secondary / satellite nodes -->
+                    <circle cx="80" cy="140" r="6" fill="rgba(59,130,246,0.4)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
+                    <circle cx="400" cy="120" r="6" fill="rgba(6,182,212,0.4)" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
+                    <circle cx="60" cy="280" r="5" fill="rgba(59,130,246,0.3)" stroke="rgba(59,130,246,0.15)" stroke-width="1"/>
+                    <circle cx="420" cy="280" r="5" fill="rgba(6,182,212,0.3)" stroke="rgba(6,182,212,0.15)" stroke-width="1"/>
+
+                    <!-- Node icons (simplified) -->
+                    <!-- Top node: brain/AI -->
+                    <path d="M234 96 a6 6 0 0 1 12 0 a6 6 0 0 1 -12 0" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.9"/>
+                    <path d="M237 93 v-3 M243 93 v-3 M235 99 h-2 M245 99 h2" stroke="#fff" stroke-width="1" opacity="0.7"/>
+
+                    <!-- Center node: star/spark -->
+                    <path d="M240 200 v20 M230 210 h20 M233 203 l14 14 M247 203 l-14 14" stroke="#fff" stroke-width="1.5" opacity="0.9"/>
+
+                    <!-- Left node: chart -->
+                    <path d="M114 196 l4 -8 l4 4 l4 -6" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.8"/>
+
+                    <!-- Right node: gear -->
+                    <circle cx="360" cy="180" r="5" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+                    <path d="M360 173 v-2 M360 187 v2 M353 180 h-2 M367 180 h2" stroke="#fff" stroke-width="1" opacity="0.6"/>
+
+                    <!-- Data flow particles -->
+                    <circle r="2.5" fill="var(--blue)" opacity="0.8">
+                        <animateMotion dur="3s" repeatCount="indefinite" path="M240,100 L240,210" />
+                    </circle>
+                    <circle r="2" fill="var(--teal)" opacity="0.6">
+                        <animateMotion dur="4s" repeatCount="indefinite" path="M120,200 L360,180" />
+                    </circle>
+                    <circle r="2" fill="var(--amber)" opacity="0.6">
+                        <animateMotion dur="3.5s" repeatCount="indefinite" path="M180,320 L240,210 L300,310" />
+                    </circle>
+
+                    <defs>
+                        <linearGradient id="line1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#06b6d4"/>
+                        </linearGradient>
+                        <linearGradient id="line2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#06b6d4"/>
+                            <stop offset="100%" stop-color="#3b82f6"/>
+                        </linearGradient>
+                        <radialGradient id="node-blue" cx="50%" cy="30%" r="70%">
+                            <stop offset="0%" stop-color="#60a5fa"/>
+                            <stop offset="100%" stop-color="#1e40af"/>
+                        </radialGradient>
+                        <radialGradient id="node-teal" cx="50%" cy="30%" r="70%">
+                            <stop offset="0%" stop-color="#22d3ee"/>
+                            <stop offset="100%" stop-color="#0e7490"/>
+                        </radialGradient>
+                        <radialGradient id="node-amber" cx="50%" cy="30%" r="70%">
+                            <stop offset="0%" stop-color="#fbbf24"/>
+                            <stop offset="100%" stop-color="#b45309"/>
+                        </radialGradient>
+                        <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="transparent"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
         </div>
     </div>
 </section>
@@ -644,15 +974,15 @@
 <div class="trust-bar">
     <div class="container">
         <div class="trust-grid">
-            <div>
+            <div class="fade-up">
                 <div class="trust-number">9+</div>
                 <div class="trust-label">Years in IT &amp; Marketing</div>
             </div>
-            <div>
+            <div class="fade-up">
                 <div class="trust-number">50+</div>
                 <div class="trust-label">Businesses Scaled</div>
             </div>
-            <div>
+            <div class="fade-up">
                 <div class="trust-number">100+</div>
                 <div class="trust-label">Projects Delivered</div>
             </div>
@@ -663,49 +993,49 @@
 <!-- SERVICES -->
 <section id="services">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-up">
             <h2 class="gradient-text">What We Do</h2>
             <p>End-to-end technology and marketing solutions built for growing businesses.</p>
         </div>
         <div class="card-grid">
-            <div class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M16 14H8a4 4 0 0 0-4 4v2h16v-2a4 4 0 0 0-4-4z"/><circle cx="12" cy="6" r="1"/></svg>
+            <div class="card fade-up">
+                <div class="card-icon card-icon-blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
                 </div>
                 <h3>AI Automation</h3>
                 <p>Custom AI chatbots, workflow automation, and intelligent systems that cut manual work and speed up operations.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">
+            <div class="card fade-up">
+                <div class="card-icon card-icon-teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                 </div>
                 <h3>SEO &amp; Marketing</h3>
                 <p>Technical SEO, content strategy, and multi-channel campaigns that drive organic traffic and qualified leads.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">
+            <div class="card fade-up">
+                <div class="card-icon card-icon-amber">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
                 <h3>CRM Systems</h3>
                 <p>CRM implementation and automation that streamlines your sales pipeline and improves lead conversion rates.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">
+            <div class="card fade-up">
+                <div class="card-icon card-icon-blue">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                 </div>
                 <h3>Managed IT &amp; Support</h3>
                 <p>Proactive monitoring, helpdesk support, and infrastructure management so your team stays productive.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            <div class="card fade-up">
+                <div class="card-icon card-icon-teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
                 </div>
                 <h3>Network &amp; Cloud</h3>
                 <p>Network design, server administration, and cloud migration for scalable, secure, and reliable infrastructure.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <div class="card fade-up">
+                <div class="card-icon card-icon-amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <h3>Security &amp; Surveillance</h3>
                 <p>Professional security camera installation, access control, and monitoring solutions to protect your business.</p>
@@ -717,20 +1047,20 @@
 <!-- WHY EGGOTEK -->
 <section id="results" class="section-alt">
     <div class="container">
-        <div class="section-header">
-            <h2 class="gradient-text">Why Businesses Choose Eggotek</h2>
+        <div class="section-header fade-up">
+            <h2 class="gradient-text-teal">Why Businesses Choose Eggotek</h2>
             <p>Practical execution, real outcomes, no fluff.</p>
         </div>
         <div class="why-grid">
-            <div class="why-card">
+            <div class="why-card fade-up">
                 <h3>75%</h3>
                 <p>Faster support response with AI-driven helpdesk automation</p>
             </div>
-            <div class="why-card">
+            <div class="why-card fade-up">
                 <h3>300%</h3>
                 <p>Organic traffic growth from technical SEO engagements</p>
             </div>
-            <div class="why-card">
+            <div class="why-card fade-up">
                 <h3>45%</h3>
                 <p>Reduced IT costs through cloud migration and optimization</p>
             </div>
@@ -741,43 +1071,43 @@
 <!-- PROJECTS -->
 <section id="projects">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-up">
             <h2 class="gradient-text">Featured Work</h2>
             <p>Real results from real engagements.</p>
         </div>
         <div class="card-grid">
-            <div class="project-card">
-                <span class="project-tag">AI</span>
+            <div class="project-card fade-up">
+                <span class="project-tag tag-ai">AI</span>
                 <h3>Enterprise AI Chatbot</h3>
                 <p>Custom AI chatbot for a services company that handles first-line support and routes complex tickets.</p>
                 <div class="project-metric"><strong>75%</strong> reduction in response time &middot; <strong>40%</strong> higher CSAT</div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">SEO</span>
+            <div class="project-card fade-up">
+                <span class="project-tag tag-seo">SEO</span>
                 <h3>E-commerce SEO Overhaul</h3>
                 <p>Full technical SEO audit and implementation for an online retailer — site structure, schema, and content strategy.</p>
                 <div class="project-metric"><strong>300%</strong> organic traffic growth in 6 months</div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Cloud</span>
+            <div class="project-card fade-up">
+                <span class="project-tag tag-cloud">Cloud</span>
                 <h3>Cloud Migration</h3>
                 <p>Migrated legacy on-prem infrastructure to cloud, improving uptime and eliminating hardware refresh cycles.</p>
                 <div class="project-metric"><strong>45%</strong> reduction in operational costs</div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Security</span>
+            <div class="project-card fade-up">
+                <span class="project-tag tag-security">Security</span>
                 <h3>Retail Surveillance System</h3>
                 <p>Multi-location camera and access control deployment for a retail chain with centralized monitoring.</p>
                 <div class="project-metric"><strong>60%</strong> reduction in shrinkage</div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">CRM</span>
+            <div class="project-card fade-up">
+                <span class="project-tag tag-crm">CRM</span>
                 <h3>CRM Automation</h3>
                 <p>Designed automated workflows in CRM that eliminated manual data entry and accelerated the sales cycle.</p>
                 <div class="project-metric"><strong>20+ hrs/week</strong> saved &middot; <strong>35%</strong> better conversion</div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Marketing</span>
+            <div class="project-card fade-up">
+                <span class="project-tag tag-marketing">Marketing</span>
                 <h3>Multi-Channel Lead Gen</h3>
                 <p>Integrated paid, organic, and email campaigns for a B2B client targeting local market share.</p>
                 <div class="project-metric"><strong>250% ROI</strong> &middot; <strong>5x</strong> qualified leads in 90 days</div>
@@ -789,11 +1119,11 @@
 <!-- TOOLS -->
 <section id="tools" class="section-alt">
     <div class="container">
-        <div class="section-header">
-            <h2 class="gradient-text">Free Tools</h2>
+        <div class="section-header fade-up">
+            <h2 class="gradient-text-teal">Free Tools</h2>
             <p>Open-source utilities built by Eggotek for IT professionals.</p>
         </div>
-        <div class="tool-card">
+        <div class="tool-card fade-up">
             <div class="tool-icon-lg">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </div>
@@ -813,12 +1143,28 @@
 <!-- CONTACT -->
 <section id="contact">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-up">
             <h2 class="gradient-text">Let's Talk</h2>
             <p>Tell us about your business and we'll build a plan to grow it.</p>
         </div>
-        <div class="contact-wrapper">
-            <form class="contact-form" action="https://formspree.io/f/xrbqwokz" method="POST" id="contact-form">
+        <div class="contact-layout">
+            <div class="contact-info fade-up">
+                <h3>Ready to scale?</h3>
+                <p>Whether you need AI automation, a better SEO strategy, or reliable IT support — we'll map out a plan tailored to your business in a free 30-minute call.</p>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <a href="mailto:hello@eggotek.com">hello@eggotek.com</a>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <span>San Antonio, TX</span>
+                </div>
+            </div>
+            <form class="contact-form fade-up" action="https://formspree.io/f/xrbqwokz" method="POST" id="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required placeholder="Your name">
@@ -834,9 +1180,6 @@
                 <button type="submit">Send Message</button>
                 <div class="form-status" id="form-status"></div>
             </form>
-            <div class="contact-alt">
-                Or email us directly at <a href="mailto:hello@eggotek.com">hello@eggotek.com</a>
-            </div>
         </div>
     </div>
 </section>
@@ -866,13 +1209,26 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// Scroll-triggered fade-up animations
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+});
+
 // Formspree AJAX submission
-const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
+var form = document.getElementById('contact-form');
+var status = document.getElementById('form-status');
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const data = new FormData(form);
+    var data = new FormData(form);
 
     fetch(form.action, {
         method: 'POST',
