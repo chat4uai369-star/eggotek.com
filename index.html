@@ -1,0 +1,1198 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eggotek | AI Automation, SEO & IT Services in San Antonio</title>
+    <meta name="description" content="Eggotek helps San Antonio businesses grow with AI automation, technical SEO, CRM systems, and IT support. Get a conversion-focused growth plan.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #a855f7;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #a855f7;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        section {
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background: radial-gradient(circle at 50% 50%, #a855f7 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+        
+        /* Centering hero container with max-width and auto margins */
+        .hero-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .hero-text-left {
+            text-align: right;
+            flex: 0 0 auto;
+            z-index: 10;
+        }
+        
+        .hero-text-right {
+            text-align: left;
+            flex: 0 0 auto;
+            z-index: 10;
+        }
+        
+        .hero-image-center {
+            width: 350px;
+            max-width: 350px;
+            flex-shrink: 0;
+            z-index: 5;
+        }
+        
+        .hero-image-center img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 0;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .hero-title-stacked {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+            color: #999;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 6rem;
+                gap: 2rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .hero-text-left,
+            .hero-text-right {
+                text-align: center;
+                padding: 0;
+            }
+            
+            .hero-image-center {
+                width: 300px;
+                max-width: 80vw;
+                margin: 0 auto;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 3rem);
+                line-height: 1.1;
+            }
+            
+            .hero-title-stacked {
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: clamp(1.5rem, 10vw, 2.5rem);
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.875rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-image-center {
+                width: 250px;
+                max-width: 70vw;
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #a855f7, #00d4ff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Centering stats grid with max-width and auto margins */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 1000px;
+        }
+        
+        @media (max-width: 640px) {
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin: 2rem auto;
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(168, 85, 247, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #a855f7;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #999;
+        }
+        
+        @media (max-width: 640px) {
+            .stat-label {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Services */
+        /* Centering services grid with max-width */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 769px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                display: grid; /* Ensure grid displays on desktop */
+            }
+        }
+        
+        /* Hide grid on mobile, show accordion instead */
+        @media (max-width: 768px) {
+            .services-grid {
+                display: none !important;
+            }
+        }
+        
+        .service-card {
+            background: rgba(168, 85, 247, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(168, 85, 247, 0.3);
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #a855f7;
+        }
+        
+        .service-card p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* Projects */
+        /* Centering projects grid with max-width */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 769px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                display: grid; /* Ensure grid displays on desktop */
+            }
+        }
+        
+        /* Hide grid on mobile, show accordion instead */
+        @media (max-width: 768px) {
+            .projects-grid {
+                display: none !important;
+            }
+        }
+        
+        .project-card {
+            background: rgba(168, 85, 247, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(0, 212, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #a855f7;
+        }
+        
+        .project-content p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* Contact Form */
+        /* Centering contact form with max-width and auto margins */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(168, 85, 247, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #a855f7;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #a855f7;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #a855f7, #00d4ff);
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .relative {
+            position: relative;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h2 {
+                font-size: 1.75rem;
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #999;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 640px) {
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Accordion Styles */
+        .accordion-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .accordion-item {
+            border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+            margin-bottom: 0;
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            text-align: left;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            color: #10b981;
+        }
+
+        .accordion-number {
+            color: #10b981;
+            font-size: 2rem;
+            margin-right: 1rem;
+            font-weight: 700;
+        }
+
+        .accordion-title {
+            flex: 1;
+            letter-spacing: 1px;
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: #10b981;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 0 0 3.5rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 0 0 1.5rem 3.5rem;
+        }
+
+        .accordion-content p {
+            color: #9ca3af;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Mobile Responsive Accordion Styles */
+        @media (max-width: 768px) {
+            .accordion-container {
+                padding: 1rem 0;
+            }
+
+            .accordion-header {
+                font-size: 1.1rem;
+                padding: 1rem 0;
+            }
+
+            .accordion-number {
+                font-size: 1.5rem;
+                margin-right: 0.5rem;
+            }
+
+            .accordion-title {
+                font-size: 1rem;
+            }
+
+            .accordion-icon {
+                font-size: 1rem;
+            }
+
+            .accordion-content {
+                padding: 0 0 0 2rem;
+            }
+
+            .accordion-item.active .accordion-content {
+                padding: 0 0 1rem 2rem;
+            }
+
+            .accordion-content p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Remove Old Carousel and Grid Styles for Mobile */
+        @media (max-width: 768px) {
+            .services-grid,
+            .projects-grid {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .accordion-container {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container {
+                display: block;
+            }
+        }
+    
+
+        /* jarvis-cyber-style */
+        :root {
+            --bg-main: #05030a;
+            --bg-elev: #0b0616;
+            --purple: #a855f7;
+            --purple-2: #7c3aed;
+            --text-soft: #cbb6ff;
+        }
+
+        body {
+            background:
+                radial-gradient(1200px 600px at 10% -10%, rgba(168,85,247,0.22), transparent 55%),
+                radial-gradient(1000px 500px at 90% -5%, rgba(124,58,237,0.2), transparent 55%),
+                var(--bg-main);
+            color: #f5f0ff;
+        }
+
+        nav {
+            background: rgba(5, 3, 10, 0.86);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+            box-shadow: 0 8px 30px rgba(124,58,237,0.22);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff 0%, #d8b4fe 35%, #a855f7 100%) !important;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%) !important;
+            box-shadow: 0 12px 32px rgba(124,58,237,0.4);
+            border: 1px solid rgba(216,180,254,0.45);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(124,58,237,0.55);
+        }
+
+        .btn-secondary {
+            border-color: rgba(168,85,247,0.55) !important;
+            color: #e9d5ff !important;
+            background: rgba(124,58,237,0.15) !important;
+        }
+
+        .service-card, .project-card, .stat-card, .accordion-item {
+            background: linear-gradient(180deg, rgba(20,10,32,0.96), rgba(10,6,18,0.96)) !important;
+            border: 1px solid rgba(168,85,247,0.28) !important;
+            box-shadow: inset 0 1px 0 rgba(216,180,254,0.06), 0 12px 30px rgba(88,28,135,0.2);
+        }
+
+        .subtitle {
+            color: var(--text-soft) !important;
+        }
+
+        #quick-contact {
+            background: linear-gradient(90deg, rgba(88,28,135,0.25), rgba(30,10,60,0.35)) !important;
+            border-bottom: 1px solid rgba(168,85,247,0.45) !important;
+        }
+
+        #proof .stat-card h3 {
+            color: #d8b4fe !important;
+        }
+    </style>
+</head>
+<body>
+  <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo">Eggotek</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="nav-menu">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="quick-contact" style="background:#0b0f14;border-bottom:1px solid rgba(255,255,255,0.12);">
+        <div class="container" style="padding:1rem 2rem;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;">
+            <strong style="color:#fff;">Need leads this month?</strong>
+            <a href="#contact" class="btn-primary" style="padding:10px 16px;">Get a Growth Plan</a>
+            <a href="mailto:hello@eggotek.com" class="btn-secondary" style="padding:10px 16px;">hello@eggotek.com</a>
+        </div>
+    </section>
+
+    <!-- Hero section -->
+    <section id="home" class="relative">
+        <div class="hero-bg"></div>
+        <div class="container" style="position: relative; z-index: 10;">
+            <div class="hero-container">
+                <div class="hero-text-left">
+                    <p style="font-size: clamp(0.75rem, 1.5vw, 1rem); color: #999; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Diego Gomez</p>
+                    <div class="hero-title-stacked">
+                        <h1 class="hero-title" style="color: #fff;">AI &</h1>
+                        <h1 class="hero-title" style="color: #fff;">Technology</h1>
+                    </div>
+                </div>
+                
+                <div class="hero-image-center">
+                    <img src="/images/1b132333-a1c1-47b2-844d-6971e24ce4f7-20-281-29.png" 
+                         alt="Diego Gomez - AI/Technology Expert">
+                </div>
+                
+                <div class="hero-text-right">
+                    <h1 class="hero-title gradient-text">EXPERT</h1>
+                    <p class="hero-subtitle">
+                        AI Automation • Technical SEO • IT Infrastructure<br>
+                        Built for San Antonio businesses that need more leads<br>
+                        <strong>9+ Years</strong> delivering measurable growth
+                    </p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <a href="#contact" class="btn-primary">Book a Free Strategy Call</a>
+                <a href="mailto:hello@eggotek.com" class="btn-secondary" style="margin-left:12px;">Email Me Directly</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-black">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="gradient-text">About Me</h2>
+                <p class="subtitle">Your Partner in Digital Transformation</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">9+</div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Businesses Scaled</div>
+                </div>
+            </div>
+            
+            <div style="max-width: 900px; margin: 3rem auto; font-size: clamp(1rem, 2vw, 1.125rem); line-height: 1.8; color: #ccc; text-align: center; padding: 0 1rem;">
+                <p style="margin-bottom: 1.5rem;">
+                    I'm Diego Gomez, founder of <strong style="color: #a855f7;">Eggotek</strong>, where cutting-edge technology meets strategic business growth. With over 9 years of expertise in IT and marketing, I've dedicated my career to helping businesses unlock their full potential through intelligent technology solutions and data-driven marketing strategies.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    My approach combines deep technical knowledge with strategic marketing insight. From implementing enterprise-grade AI solutions to optimizing SEO and CRM systems, I create comprehensive digital ecosystems that drive measurable results. Whether it's network administration, cloud development, or AI integration, I ensure your business stays ahead of the curve.
+                </p>
+                <p>
+                    I've helped dozens of businesses scale by leveraging the perfect blend of technology and marketing. My mission is simple: transform your business challenges into growth opportunities through innovative solutions that deliver real ROI.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background: #0a0a0a;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="gradient-text">Services</h2>
+                <p class="subtitle">Comprehensive Solutions for Modern Businesses</p>
+            </div>
+            
+            <!-- Accordion for mobile only -->
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">1.</span>
+                        <span class="accordion-title">AI INTEGRATION</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Implement cutting-edge AI solutions to automate processes, enhance decision-making, and unlock new revenue streams for your business.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">2.</span>
+                        <span class="accordion-title">SEO & MARKETING STRATEGY</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Data-driven marketing strategies and SEO optimization that increase visibility, drive qualified traffic, and maximize conversions.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">3.</span>
+                        <span class="accordion-title">CRM IMPLEMENTATION</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Custom CRM solutions that streamline customer relationships, improve sales processes, and provide actionable insights.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">4.</span>
+                        <span class="accordion-title">TECHNICAL SUPPORT</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Tier 1 technical support ensuring your systems run smoothly with minimal downtime and maximum efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">5.</span>
+                        <span class="accordion-title">NETWORK & SERVER ADMINISTRATION</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Expert network infrastructure design, server management, and cloud development for scalable, secure operations.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">6.</span>
+                        <span class="accordion-title">SURVEILLANCE SYSTEMS</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Professional installation and configuration of surveillance systems to protect your business assets and ensure security.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid for desktop only -->
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Integration</h3>
+                    <p>Implement cutting-edge AI solutions to automate processes, enhance decision-making, and unlock new revenue streams for your business.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>SEO & Marketing Strategy</h3>
+                    <p>Data-driven marketing strategies and SEO optimization that increase visibility, drive qualified traffic, and maximize conversions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>CRM Implementation</h3>
+                    <p>Custom CRM solutions that streamline customer relationships, improve sales processes, and provide actionable insights.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Technical Support</h3>
+                    <p>Tier 1 technical support ensuring your systems run smoothly with minimal downtime and maximum efficiency.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Network & Server Administration</h3>
+                    <p>Expert network infrastructure design, server management, and cloud development for scalable, secure operations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📹</div>
+                    <h3>Surveillance Systems</h3>
+                    <p>Professional installation and configuration of surveillance systems to protect your business assets and ensure security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="proof" style="background:#050505;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="gradient-text">Why Businesses Choose Eggotek</h2>
+                <p class="subtitle">Practical execution. Real outcomes. No fluff.</p>
+            </div>
+            <div class="stats-grid" style="margin-top:2rem;">
+                <div class="stat-card"><h3>24h</h3><p>Typical response time</p></div>
+                <div class="stat-card"><h3>75%</h3><p>Faster support response in recent AI support project</p></div>
+                <div class="stat-card"><h3>300%</h3><p>Organic traffic growth in SEO case study</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="gradient-text">Featured Projects</h2>
+                <p class="subtitle">Real Results for Real Businesses</p>
+            </div>
+            
+            <!-- Accordion for mobile only -->
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">1.</span>
+                        <span class="accordion-title">ENTERPRISE AI CHATBOT</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Developed custom AI chatbot that reduced customer service response time by 75% and increased customer satisfaction scores by 40%.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">2.</span>
+                        <span class="accordion-title">E-COMMERCE SEO OVERHAUL</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Implemented comprehensive SEO strategy resulting in 300% increase in organic traffic and 150% boost in online revenue within 6 months.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">3.</span>
+                        <span class="accordion-title">CLOUD MIGRATION PROJECT</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Successfully migrated legacy infrastructure to cloud, reducing operational costs by 45% while improving system reliability and scalability.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">4.</span>
+                        <span class="accordion-title">SECURITY SYSTEM INTEGRATION</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Designed and installed comprehensive surveillance system for retail chain, reducing theft by 60% and improving overall security posture.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">5.</span>
+                        <span class="accordion-title">CRM AUTOMATION SOLUTION</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Built custom CRM workflow automations that saved 20+ hours per week and improved lead conversion rates by 35%.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="accordion-number">6.</span>
+                        <span class="accordion-title">DIGITAL MARKETING CAMPAIGN</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Executed multi-channel digital marketing campaign achieving 250% ROI and 5x increase in qualified leads within 90 days.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid for desktop only -->
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="service-icon">🤖</div>
+                    <div style="padding: 2rem;">
+                        <h3 style="color: #a855f7; margin-bottom: 1rem;">Enterprise AI Chatbot</h3>
+                        <p style="color: #ccc; line-height: 1.7;">Developed custom AI chatbot that reduced customer service response time by 75% and increased customer satisfaction scores by 40%.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="service-icon">📊</div>
+                    <div style="padding: 2rem;">
+                        <h3 style="color: #a855f7; margin-bottom: 1rem;">E-commerce SEO Overhaul</h3>
+                        <p style="color: #ccc; line-height: 1.7;">Implemented comprehensive SEO strategy resulting in 300% increase in organic traffic and 150% boost in online revenue within 6 months.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="service-icon">☁️</div>
+                    <div style="padding: 2rem;">
+                        <h3 style="color: #a855f7; margin-bottom: 1rem;">Cloud Migration Project</h3>
+                        <p style="color: #ccc; line-height: 1.7;">Successfully migrated legacy infrastructure to cloud, reducing operational costs by 45% while improving system reliability and scalability.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="service-icon">🔒</div>
+                    <div style="padding: 2rem;">
+                        <h3 style="color: #a855f7; margin-bottom: 1rem;">Security System Integration</h3>
+                        <p style="color: #ccc; line-height: 1.7;">Designed and installed comprehensive surveillance system for retail chain, reducing theft by 60% and improving overall security posture.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="service-icon">⚙️</div>
+                    <div style="padding: 2rem;">
+                        <h3 style="color: #a855f7; margin-bottom: 1rem;">CRM Automation Solution</h3>
+                        <p style="color: #ccc; line-height: 1.7;">Built custom CRM workflow automations that saved 20+ hours per week and improved lead conversion rates by 35%.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="service-icon">📱</div>
+                    <div style="padding: 2rem;">
+                        <h3 style="color: #a855f7; margin-bottom: 1rem;">Digital Marketing Campaign</h3>
+                        <p style="color: #ccc; line-height: 1.7;">Executed multi-channel digital marketing campaign achieving 250% ROI and 5x increase in qualified leads within 90 days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: #0a0a0a;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="gradient-text">Let's Work Together</h2>
+                <p class="subtitle">Ready to transform your business? Get in touch today.</p>
+            </div>
+            
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 3rem; color: #999;">
+                <p>Email: <a href="mailto:info@eggotek.com" style="color: #a855f7;">info@eggotek.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+        
+        function closeMenu() {
+            document.getElementById('nav-menu').classList.remove('active');
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            const subject = encodeURIComponent('New inquiry from ' + (data.name || 'Website Visitor'));
+            const body = encodeURIComponent(
+                'Name: ' + (data.name || '') + '
+' +
+                'Email: ' + (data.email || '') + '
+
+' +
+                'Message:
+' + (data.message || '')
+            );
+
+            // Opens user email client with pre-filled message to ensure submissions are actionable.
+            window.location.href = 'mailto:hello@eggotek.com?subject=' + subject + '&body=' + body;
+
+            console.log('Form submitted:', data);
+            alert('Thanks! Your email draft has been prepared. If it did not open, email hello@eggotek.com directly.');
+            event.target.reset();
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('nav-menu');
+            const btn = document.querySelector('.mobile-menu-btn');
+            
+            if (!nav.contains(event.target) && !btn.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Accordion Functionality
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionItem = button.parentElement;
+                const isActive = accordionItem.classList.contains('active');
+                
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
